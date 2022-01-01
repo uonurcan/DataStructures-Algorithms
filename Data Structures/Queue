@@ -1,0 +1,47 @@
+class Queue:
+
+	def __init__(self):
+		self.items = [ ] #items adında boş bir yapı oluşturulur
+
+	def isEmpty(self):
+		return self.items == [ ] #items yapısı boşsa true, değilse false döner.
+
+	def enqueue(self,item):
+		self.items.insert(0, item) #0. indexe item parametresi ile veri eklenir.
+		
+	def dequeue(self):
+		return self.items.pop() #yapıdan, ilk eklenen veriyi siler.
+
+	def rear(self):
+		return self.items [0] #yapıya son eklenen veriyi döndürür.
+
+	def front(self):
+		return self.items [len(self.items)-1] #yapıya ilk eklenen veriyi döndürür.
+
+	def size(self):
+		return len(self.items) #yapıdaki eleman sayısını döndürür.
+
+class UseQueue:
+    
+    queue = Queue() # queue isminde bir obje yaratıldı. Queue classı init edildi yani items adında bir yapı oluşturuldu.
+
+    print(queue.isEmpty()) # true döndü, yani yapı boş.
+
+    queue.enqueue("Istanbul") # yapıya “Istanbul” stringi eklendi.
+    print(queue.front()) #ekrana fronttaki veriyi yani son eklenen “Istanbul” stringini yazdırdı.
+
+    queue.enqueue("Ankara") # yapıya “Ankara” stringi eklendi.
+    print(queue.front()) #ekrana fronttaki veriyi yani son eklenen “Ankara” stringini yazdırdı.
+
+    queue.enqueue("Izmir") # yapıya “Izmir” stringi eklendi.
+    print(queue.front()) #ekrana fronttaki veriyi yani son eklenen “Izmir” stringini yazdırdı.
+
+    print("size: ", queue.size()) # yapıdaki veri sayısını yani 3’ü yazdırdı.
+
+    queue.rear() # ekrana reardaki veriyi yani ilk eklenen “Istanbul” stringini yazdırdı.
+    queue.dequeue() #yapıdan bir veri silindi, bu yapıya son eklenen veri yani “Istanbul” stringidir.
+
+    queue.rear() # ekrana reardaki veriyi yani ilk eklenen “Ankara” stringini yazdırdı.
+    queue.dequeue() #yapıdan bir veri silindi, bu yapıya son eklenen veri yani “Ankara” stringidir.
+
+    print(queue.isEmpty()) # false döndü, yani yapı dolu.

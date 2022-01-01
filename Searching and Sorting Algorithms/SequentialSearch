@@ -1,0 +1,53 @@
+class SequentialSearch:
+
+    def sequentialSearchUnorderedList(list, value):
+        
+        index = 0
+        found = False
+        while index < len(list) and found == False:
+            
+            if list[index] == value: #value parametresi, list parametresinin bir elemanı ile   						           #eşleştiğinde
+                found = True #found değişkeni true değerini alır ve döngüden çıkılır.
+            else:
+                index += 1 #eşleşme olmadığı sürece index değeri her seferinde 1 artırılır
+
+        if found == True: #döngüden çıkıldığında eğer aranan bulunduysa
+            return index #değerin kaçıncı indexte bulunduğu bilgisi return edilecek.
+        return "Böyle bir değer yok!"#eğer bulunamadıysa da uyarı mesajı return edilecek.
+        
+
+    list=[4,5,2,10,3] 
+    index = sequentialSearchUnorderedList(list,10) #fonksiyona parametre olarak, list listesi 10 değeri ile beraber verildi. Yani fonksiyon, list içerisinde 10 değeri aradı.
+    print(index) #ekrana, aranan veri bulunduysa kaçıncı indexte bulunduğu, bulunmadıysa da hata mesajı yazıldı.	yani 3.
+
+    #ÇIKTI: 3
+
+    def sequentialSearchOrderedList(list,value):
+
+        index=0
+        found=False
+        stop=False
+        
+        while index <len(list) and found == False and stop == False:
+            if list[index] == value:
+                found = True
+
+            else:
+                if value < list[index]: #eğer aranan elemandan daha büyük bir elemana gelindiyse arama işlemi sona erer.
+                    stop = True
+                else:
+                    index += 1
+        
+        if found == True:
+            return index	
+        return ("Böyle bir değer yok!")
+
+
+    list = [4, 7, 9, 32, 44] 
+    index = sequentialSearchOrderedList(list,10)
+    print(index) 
+
+    #ÇIKTI: Böyle bir değer yok!
+
+
+    

@@ -1,0 +1,43 @@
+class DoublyLink(object):
+
+	def __init__(self,value):
+		self.value = value #yeni node yaratıldı, tuttuğu değer value parametresidir.
+		self.nextnode = None #bir sonraki node şu an boş
+		self.prevnode = None #bir önceki node şu an boş
+	
+	def setNextNode(self,node):
+		self.nextnode = node #bir sonraki nodeun sakladığı değer set edilir.
+
+	def setPrevNode(self, node):
+		self.prevnode = node #bir önceki nodeun sakladığı değer set edilir.
+
+	def getNextNode(self):
+		return self.nextnode #bir sonraki nodeu return eder.
+
+	def getPrevNode(self):
+		return self.prevnode #bir önceki nodeu return eder.
+	
+	def getNodeValue(self):
+		return self.value #nodedaki veriyi return eder.
+
+class UseDoublyLink:
+    #Her bir node bir il olsun; sakladığı değerleri ise o ilin plakası.
+    istanbul = DoublyLink("34")
+    izmir = DoublyLink("35")
+    ankara = DoublyLink("06")
+
+    istanbul.setNextNode(ankara) #istanbul isimli node, ankara isimli nodea bağlandı.
+    ankara.setPrevNode(istanbul) #ankara isimli node, istanbul isimli nodea bağlandı.
+
+    #istanbul <—> ankara
+
+    print(ankara.getPrevNode().getNodeValue()) #listede ankara nodeundan önceki nodeun sakladığı değer ekrana yazdırıldı.
+
+    #ÇIKTI: 34
+
+    ankara.setNextNode(izmir) #ankara isimli node, izmir isimli nodea bağlandı.
+    izmir.setNextNode(ankara) #izmir isimli node, ankara isimli nodea bağlandı.
+
+    print(ankara.getNextNode().getNodeValue()) #ankara isimli nodeun bağlı olduğu izmir isimli nodeun sakladığı değer ekrana yazdırıldı.
+
+    #ÇIKTI: 35

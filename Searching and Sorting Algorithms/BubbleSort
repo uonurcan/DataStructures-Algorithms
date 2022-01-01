@@ -1,0 +1,16 @@
+class BubbleSort:
+
+    def bubbleSort(list):
+
+        for x in range(len(list)-1,0,-1): #döngü, listenin uzunluğunun 1 eksiğinden başlayacak, 0’a 	                    					#kadar dönecek(son indexten sıfırıncı indexe kadar), 1 							#azalarak devam edecek. 
+            
+            for y in range(x): #içerideki döngü, dışarıdaki döngü kaçıncı indexteyse o kadar dönecek. 
+                if list[y] > list[y+1]: #bir veri bir sonrakinden büyük mü kontrolü
+                    temp = list[y] #eğer büyükse, temp adındaki değişken aracılığıyla
+                    list[y] = list[y+1] #yer değiştirecekler.
+                    list[y+1] = temp #böylece ikiliden küçük olanı başta olacak.
+        return list
+
+    list = [3,2,9,4,6,5,7,8,1] 
+    bubbleSort(list) 
+    #ÇIKTI: [1,2,3,4,5,6,7,8,9]

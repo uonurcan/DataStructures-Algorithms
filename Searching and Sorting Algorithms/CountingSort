@@ -1,0 +1,21 @@
+class CountingSort:
+
+    def countingSort(array,maxval):
+
+        n=len(array)
+        m=maxval + 1 #sayma listesi için eleman sayısı.
+        count = [0] * m #sayma listesinin tüm elemanları 0 yapılır.
+
+        for a in array:	#a değişkeni ile listede gezilir.
+            count[a] += 1 #sayma listesinin ilgili indisi 1 artırılır.
+
+        i = 0
+        for a in range(m): #bu döngü sayma listesinin eleman sayısı kadar döner.
+            for c in range(count[a]): #bu döngü, sayma listesinin ilgili indisindeki değer kadar döner
+                array[i] = a #liste, küçükten büyüğe doğru sıralanır.
+                i += 1
+            return array
+
+        arr = [1,2,3,4,5,6,7,7,7,7,1,1,1,2,3]
+        countingSort(arr,7)
+        #ÇIKTI: [1,1,1,1,2,2,3,3,4,5,6,7,7,7,7] 

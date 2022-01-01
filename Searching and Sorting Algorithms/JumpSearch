@@ -1,0 +1,36 @@
+import math
+class JumpSearch:
+
+    def jumpSearch(list, value):
+        
+        size = len(list)
+        step = math.sqrt(size) 
+        prev = 0
+        
+        while list[min(step,size)-1] < value: #aranan verinin hangi blokta olduğunu bulmak için 
+            prev = step
+            step += math.sqrt(size)
+            
+            if prev >= size: #liste sonuna kadar taranmış ancak aranan eleman bulunamamışsa -1 return edilir.
+                return -1
+
+        while list[int(prev)]<value: #aranan değerin hangi blokta olduğu anlaşıldıktan sonra bu döngüye girilir.
+            prev +=1 #bloğun başlangıç değeri birer birer artırılarak eşleşme kontrol edilir
+
+            if prev == min(step,size): #eğer aranan eleman burada bulunamazsa yok demektir.
+                return -1
+        
+        if list[int(prev)] == value: #aranan değerin bulunması durumu
+            return int(prev) #bulunan değerin index no return edilir.
+        
+        return -1 
+
+    list = [0, 2, 4, 6, 8,10,12,14,16,18, 20] # 11 elemanlı bir yapı oluşturuldu.
+    jumpSearch(list,6) #fonksiyona list ve 6 girdileri verildi -listede 6 elemanı aratıldı.
+
+    #ÇIKTI: 3 üçüncü indexte bulundu.
+
+    jumpSearch(list,9) #fonksiyona list ve 9 girdileri verildi -listede 9 elemanı aratıldı.
+
+    #ÇIKTI: -1 eleman bulunamadı.
+

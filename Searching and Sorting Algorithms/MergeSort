@@ -1,0 +1,41 @@
+class MergeSort:
+
+    def mergeSort(list):
+
+        if len(list) > 1: #liste boyutu 1’den büyük mü kontrolü
+            mid=int(len(list)/2) #listenin eleman sayısının yarısı alınır.
+            lefthalf = list[:mid] #listede ortanın solundaki veriler yeni bir listeye aktarılır.
+            righthalf = list[mid:] #listede ortanın sağındaki veriler yeni bir listeye aktarılır.
+
+            mergeSort(lefthalf) #fonksiyon lefthalf parametresi ile tekrar çağrılır.
+            mergeSort(righthalf) #fonksiyon righthalf parametresi ile tekrar çağrılır.
+
+        i,j,k=0
+
+        while i < len(lefthalf) and j<len(righthalf): #sağ ve sol taraflar için döngü
+            
+            if lefthalf[i]<righthalf[j]: #her iki tarafı kıyaslayan ve 
+                list[k] = lefthalf[i] #küçük olan değeri asli listede daha önce yazan kod bloğu
+                i += 1		
+            else:
+                list[k] = righthalf[j]
+                j += 1
+            k += 1
+
+        while i < len(lefthalf):
+
+            list[k] = lefthalf[i]
+            i += 1
+            k += 1
+
+        while j < len(righthalf):
+
+            list[k] = righthalf[j]
+            j += 1
+            k += 1 
+
+        return list
+
+    list=[3,1,5,7,2,4,9,6,8]
+    mergeSort(list)
+    #ÇIKTI: [1,2,3,4,5,6,7,8,9]

@@ -1,0 +1,20 @@
+class SelectionSort:
+
+    def selectionSort(list): #önceki fonksiyonlardan farklı olarak, en büyük değer en son indexe yazılarak sıralama yapılacak. Her iki yöntem de kullanılabilir.
+        
+        for i in range(len(list)-1,0,-1): #son indexten 0’a kadar birer birer azalarak
+            positionofmax = 0
+            
+            for location in range (1,i+1): #location bilgisi, 1’den listenin sonuna kadar
+                if list[location] > list[positionofmax]: #eleman, bir önceki elemandan büyükse
+                    positionofmax = location #en büyük eleman tayin edilir
+
+            temp = list[i] #son indexteki değer, geçici değişkene atanır.
+            list[i] = list[positionofmax] #son indexe en büyük veri atanır.
+            list[positionofmax] = temp #geçici değişkendeki değer, en büyük veriye atanır.
+
+        return list
+
+    list = [3,2,9,4,6,5,7,8,1] 
+    selectionSort(list) 
+    #ÇIKTI: [1,2,3,4,5,6,7,8,9]

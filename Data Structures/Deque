@@ -1,0 +1,38 @@
+class Deque:
+
+	def __init__(self):
+		self.items = [ ] # items adında boş bir yapı oluşturulur.
+
+	def isEmpty(self):
+		return self.items == [ ] #items yapısı boşsa true, değilse false döner.
+
+	def addFront(self, item):
+		self.items.append(item) #yapıya item parametresi ile front kısmından veri eklenir.
+
+	def addRear(self,item):
+		self.items.insert(0,item) #yapıya item parametresi ile rear kısmından veri eklenir.
+	
+	def removeFront(self):
+		return self.items.pop() #yapının front kısmından eleman siler.
+
+	def removeRear(self):
+		return self.items.pop(0) #yapının rear kısmından eleman siler.
+
+	def size(self):
+		return len(self.items)
+
+class UseDeque:
+
+    deque = Deque() # deque isminde bir obje yaratıldı. Deque classı init edildi yani items adında bir yapı oluşturuldu.
+
+    deque.addFront(10) #yapıya front kısmından 10 eklendi.
+    deque.addFront(10) #yapıya front kısmından 20 eklendi.
+    deque.addRear(20) #yapıya rear kısmından 80 eklendi.
+    deque.addRear(20) #yapıya rear kısmından 90 eklendi.
+
+    print("size: ", deque.size())  # yapıdaki veri sayısı yani 4 ekrana yazdırıldı.
+
+    deque.removeFront() #front kısmından veri silindi, bu da fronta ilk eklenen veri olan 10’dur.
+    deque.removeRear() #rear kısmından veri silindi, bu da reara son eklenen veri olan 90’dır.
+
+    print("size: ", deque.size())  # yapıdaki veri sayısı yani 2 ekrana yazdırıldı.

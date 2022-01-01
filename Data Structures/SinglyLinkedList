@@ -1,0 +1,35 @@
+class SinglyLink(object):
+	
+	def __init__(self, value):
+		self.value = value #yeni node yaratılır, sakladığı değer value parametresidir.
+		self.nextnode = None #bir sonraki node şu an için boş.
+
+	def setNextNode(self, node):
+		self.nextnode = node #bir sonraki nodeun sakladığı değer set edilir.
+
+	def getNextNode(self):
+		return self.nextnode #bir sonraki nodeu return eder.
+
+	def getNodeValue(self):
+		return self.value #ilk nodeun sakladığı değeri return eder.
+
+
+
+class UseSinglyLink:
+    #Her bir node bir il olsun; sakladığı değerleri ise o ilin plakası.
+    istanbul = SinglyLink("34")
+    izmir = SinglyLink("35")
+    ankara = SinglyLink("06")
+
+    istanbul.setNextNode(izmir) #istanbul isimli node, izmir isimli nodea bağlandı.
+    print(istanbul.getNextNode().getNodeValue()) # istanbul nodeunun bağlı olduğu nodeun sakladığı veri return edildi.
+    #ÇIKTI: 35
+
+    izmir.setNextNode(ankara) #izmir isimli node, ankara isimli nodea bağlandı.
+    print(izmir.getNextNode().getNodeValue()) #izmir nodeunun bağlı olduğu nodeun sakladığı veri return edildi.
+    #ÇIKTI: 06
+
+    #listenin mevcut hali: istanbul —> izmir —> ankara
+    #Bu listede, istanbul’dan Ankara’ya da ulaşılabilir. Sırayla gezmek zorunda değiliz.
+    print(istanbul.getNextNode().getNextNode().getNodeValue) #istanbul nodeunun bağlı olduğu node ve sonra o nodeun bağlı olduğu node return edildi. Son olarak da return edilen nodeun sakladığı veri return edildi.
+    #ÇIKTI: 06

@@ -1,0 +1,32 @@
+class BinarySearch:
+
+    def binarySearch(list,value):
+
+        first_index = 0
+        last_index = len(list) -1
+        found = False
+
+        while first_index <= last_index and found == False:
+            
+            middle_index = int((first_index + last_index)/2) #yapının ortanca indexi belirlenir
+            if list[middle_index] == value: #eğer aranan veri ortanca indexteyse
+                found = True
+                return (found, middle_index) #kaçıncı indexte bulunduğu bilgisini return et.
+            
+            else:
+                if value < list[middle_index]: #eğer aranan veri ortadaki veriden küçükse
+                    last_index = middle_index -1 #sadece ortadaki veriden küçük olanlara bakılacak.
+                else: #değilse
+                    first_index = middle_index + 1 #sadece ortadaki veriden büyük olanlara bakılacak.
+
+        return (found, "Böyle bir eleman yok!")
+
+
+        list[3,5,8,11,14,17,22] #liste tanımlandı.
+        found, index = binarySearch(list, 17) #fonksiyona list ile beraber 17 parametresi gönderildi. Listede 17 arandı.
+        print(found) #found bilgisi yazdırıldı.
+        print(index) #kaçıncı indexte bulunduğu bilgisi yazdırıldı.
+
+        #ÇIKTI: 
+        #True 
+        #5

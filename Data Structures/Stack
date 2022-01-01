@@ -1,0 +1,43 @@
+class Stack:
+
+	def __init__(self):
+		self.items = [ ] #items isminde boş bir yapı oluşturulur.
+		
+	def isEmpty(self):
+		return self.items == [ ] # eğer items yapısı boşsa dönüş değeri true; değilse false.
+		
+	def push(self, item): 
+		self.items.append(item) #yapıya “item” parametresi eklenir.
+
+	def pop(self):
+		return self.items.pop() #yapıdan son eklenen veri silinir.
+	
+	def top(self):
+		return self.items [len(self.items)-1] #yapıya son eklenen veriyi döndürür.
+
+	def size(self):
+		return len(self.items) #yapıdaki veri sayısı
+
+class UseStack:
+
+    stack = Stack() #stack isminde bir obje yaratıldı. Stack classı init edildi yani items adında bir yapı oluşturuldu.
+    print (stack.isEmpty()) #true döndü, yani yapı boş.
+
+    stack.push("Istanbul") #yapıya “Istanbul” stringi eklendi.
+    print(stack.top()) #ekrana toptaki veriyi yani son eklenen “Istanbul” stringini yazdırdı.
+
+    stack.push("Izmir") #yapıya “Izmir” stringi eklendi.
+    print(stack.top()) #ekrana toptaki veriyi yani son eklenen “Izmir” stringini yazdırdı.
+
+    stack.push("Ankara") #yapıya “Ankara” stringi eklendi.
+    print(stack.top()) #ekrana toptaki veriyi yani son eklenen “Ankara” stringini yazdırdı.
+
+    print(stack.size()) #ekrana yapıdaki veri sayısını yani 3’ü yazdırdı.
+
+    stack.pop() #yapıdan bir veri silindi, bu yapıya son eklenen veri yani “Ankara” stringidir.
+    print(stack.top()) #ekrana yapıda toptaki veriyi yani son eklenen “Izmir” stringini yazdırdı.
+
+    stack.pop() #yapıdan bir veri silindi, bu yapıya son eklenen veri yani “Izmir” stringidir.
+    print(stack.top()) #ekrana yapıda toptaki veriyi yani son eklenen “Istanbul” stringini yazdırdı.
+
+    print(stack.isEmpty()) #false döndü, yani yapı dolu.

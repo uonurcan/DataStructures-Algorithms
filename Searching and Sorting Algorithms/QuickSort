@@ -1,0 +1,41 @@
+class QuickSort:
+
+    
+    def quickSortRecursion(arr,first,last):
+
+        if first < last: #algoritmanın çalışmaya devam edeceği durum
+            
+            splitPoint = partition(arr,first,last)
+            quickSortRecursion(arr,first,splitPoint-1) #başlangıç değeri ve bölünen yer
+            quickSortRecursion(arr,splitPoint+1,last) #bölünen yer ve son değer 
+            
+    def quickSort(arr):
+
+        quickSortRecursion(arr,0,len(arr)-1)
+        return arr
+
+    def partition(arr,first,last):
+            
+        pivotValue = arr[first] #pivot value olarak dizinin ilk elemanı seçildi.
+        left = first + 1 #pivottan bir sonraki değer
+        right = last #dizinin son değeri
+        done = False
+
+        while not done:
+            
+            while left <= right and arr[left] <= pivotValue: #soldaki değer pivottan küçük veya 									 #ona eşitken
+                left = left + 1 #soldaki değer bir sağa atılacak
+            while arr[right] >= pivotValue and right >= left: #sağdaki değer pivottan büyük veya 									   #ona eşitken
+                right = right - 1 #sağdaki değer bir sola atılacak
+            if right < left: #right ve leftin yeri değiştiyse
+                done = True #True değeri atandı
+            else: #aksi taktirde 
+                temp = arr[left] 
+                arr[left] = arr[right]
+                arr[right] = temp
+
+        temp = arr[first]
+        arr[first] = arr[right]
+        arr[right] = temp
+
+        return right
